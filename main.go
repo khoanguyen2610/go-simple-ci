@@ -8,9 +8,11 @@ import (
 )
 
 type HealthResponse struct {
-	Status    string    `json:"status"`
-	Timestamp time.Time `json:"timestamp"`
-	Message   string    `json:"message"`
+	Status    string            `json:"status"`
+	Timestamp time.Time         `json:"timestamp"`
+	Message   string            `json:"message"`
+	Metadata  map[string]string `json:"metadata"`
+	Version   string            `json:"version"`
 }
 
 func healthHandler(w http.ResponseWriter, r *http.Request) {
@@ -23,6 +25,7 @@ func healthHandler(w http.ResponseWriter, r *http.Request) {
 		Status:    "healthy",
 		Timestamp: time.Now(),
 		Message:   "Service is running successfully",
+		Metadata:  map[string]string{"version": "1.0.0"},
 	}
 
 	w.Header().Set("Content-Type", "application/json")
