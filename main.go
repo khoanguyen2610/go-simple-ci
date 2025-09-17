@@ -12,7 +12,7 @@ type HealthResponse struct {
 	Timestamp time.Time         `json:"timestamp"`
 	Message   string            `json:"message"`
 	Metadata  map[string]string `json:"metadata"`
-	Version   *string           `json:"omitempty,version"`
+	Version   *string           `json:"version,omitempty"`
 }
 
 func healthHandler(w http.ResponseWriter, r *http.Request) {
